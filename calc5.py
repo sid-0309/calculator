@@ -38,19 +38,24 @@ def calc(inp):
             lst.remove(i)
 
     for i in lst:
-
-        d = lst.index(i)
-
+        d= lst.index(i)
 
         if i == ".":
             n1 = lst[d-1]
             n2 = lst[d+1]
+            print(n1)
+            print(n2)
 
             new_str = n1 + i + n2
             new1 = float(new_str)
 
             lst[d+1] = new1
             del lst[d-1:d+1]
+
+    for i in lst:
+
+        d = lst.index(i)
+
 
         if i == "-":
             if d == 0:
@@ -142,7 +147,8 @@ def calc(inp):
                     exitcode = 1
 
 
-    print("Output = ", lst[0])
+    #print("Output = ", lst[0])
+    return lst[0]
 
 exp = input("--:")
 
