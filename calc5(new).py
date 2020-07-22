@@ -28,20 +28,18 @@ def calc(inp):
 
         d = lst.index(i)
 
-      
 
         if i == "-":
-            if d == 0:
-                n1 = float(lst[d+1])
-                new = 0 - n1
+            if (d == 0) or (lst[d-1] in "*/"):
+                new = 0 - float(lst[d+1])
                 lst[d+1] = new
                 del lst[d]
 
-            elif d > 0:
-                n1 = float(lst[d+1])
-                new = 0 - n1
+            elif (lst[d-1] not in "*/") or (d > 0):
+                new  = 0 - float(lst[d+1])
                 lst[d+1] = new
                 lst[d] = "+"
+            
 
 
 
@@ -69,20 +67,6 @@ def calc(inp):
 
 
 
-
-    '''
-    def pow(a,b):
-        return a ** b
-
-    def floor(a, b):
-        return a // b
-    def div(a, b):
-        return a / b
-    def mul(a, b):
-        return a * b
-    def ad(a, b):
-        return a + b
-    '''
 
     ops = {
         "^":lambda x,y:x**y,
