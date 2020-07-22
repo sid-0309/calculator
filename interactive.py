@@ -1,3 +1,5 @@
+from keyboard import is_pressed
+
 def calc(inp):
     from re import split
 
@@ -98,9 +100,9 @@ while exitcode == 0:
     else:
         exp = input(output)
 
-    if exp == "x":
+    if if is_pressed("x"):
         break
-    elif exp == "c":
+    elif if is_pressed("c"):
         default  = ""
         continue
     else:
