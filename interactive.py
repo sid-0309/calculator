@@ -83,11 +83,21 @@ def calc(inp):
     
     return end_output
 
+def check(a):
+    try:
+        calc(a)
+        return True
+    except Exception:
+        return False
+
 
 print(r"      ____  ____         ____               ____  _____  ____   ____ ")
 print(r"     |     |    | |     |     |    | |     |    |   |   |    | |    |")
 print(r"     |     |----| |     |     |    | |     |----|   |   |    | |----'")
 print(r"     |____ |    | |____ |____ |____| |____ |    |   |   |____| |   | ")
+print()
+print("Enter x to exit.")
+print("Enter c to clear.")
 
 
 default = ""
@@ -106,7 +116,11 @@ while True:
         default  = ""
         continue
     else:
-
-        output = calc(str(default) + exp)
-        default = output
+        if check(str(default) + exp) is True:
+            output = calc(str(default) + exp)
+            default = output
+        else:
+            print("Syntax Error!")
+            output = str(default)
+            default = output
    
