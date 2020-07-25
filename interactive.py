@@ -22,7 +22,7 @@ def calc(inp):
         lst = a
     ops = {"^":lambda x,y:x**y,"$":lambda x,y:x//y, "/":lambda x,y:x/y, "*":lambda x,y:x*y,"+":lambda x,y:x+y}
     evaluvator(lst)
-    return round(lst[0], 3)
+    return round(float(lst[0]), 3)
 def check(a):
     global x
     try:
@@ -38,20 +38,42 @@ print()
 print("Enter x to exit.")
 print("Enter c to clear.")
 default = ""
+e = 0
 while True:
     if default == "":
         print("Enter expression.")
         exp = input()
     else:
         exp = input(output)
+        if exp[0].isdigit():
+            print("Syntax Error!")
+            e = 1
     if exp == "x":
         break
     elif exp == "c":
         default  = ""
     else:
-        if check(str(default) + exp) is not False:
+        if e == 1:
+            output = str(default)
+            default = output
+            continue
+        d1,d2,c= -1,0,0
+        while "(" in exp:
+            for i in range(d1+1, len(exp)):
+                if exp[i] == "(":
+                    d1 = i
+                    break
+                elif exp[i] ==")":
+                    d2 = i
+                    c = 1
+                if c == 1:
+                    exp = exp.replace("("+exp[d1+1:d2]+")", str(calc(exp[d1+1:d2])))
+                    d1,d2,c = -1,0,0      
+                    break
+        if check(str(default) + str(exp)) is not False:
             output = x
             default = output
         else:
             print("Syntax Error!")
-            output, default = str(default), output   
+            output = str(default)
+            default = output
