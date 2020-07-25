@@ -55,7 +55,7 @@ while True:
     else:
         if e == 1:
             output = str(default)
-            default = output
+            default,e = output,0
             continue
         d1,d2,c= -1,0,0
         while "(" in exp:
