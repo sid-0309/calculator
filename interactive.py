@@ -1,3 +1,5 @@
+#online .gitignore
+
 def calc(inp):
     from re import split
     inp = inp.replace("--", "+").replace("++", "+").replace("+-", "-").replace("-+", "-").replace("**","^").replace("//", "$")
